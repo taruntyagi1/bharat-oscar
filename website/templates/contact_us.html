@@ -1,0 +1,120 @@
+{% extends 'frame.html' %}
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+    .err{
+      color: red ;
+    }
+
+    #err_message{
+      color: red ;
+    }
+
+#success_message{
+color:green;
+}
+  </style>
+
+
+
+
+
+    <div class="site_wrapper">
+
+
+        <section class="site_ContactUs">
+            <div class="container">
+                <div class="row">
+                  <div class="col-sm-6">
+                    
+                    <div class="contact_left_sect">
+                        <h3>Become a member</h3>
+                        <h4>Join the association</h4>
+                        <p> Reach out to us for membership application, partner onboarding or general inquiries. Our goal is to build a cohesive community that will lead the growth of Web3 technology revolution in India.</p>
+                        <ul>
+                            <li>Alps Building, 56 Janpath, UGF, <br> New Delhi 110001</li>
+                            <li>secretariat@bharatweb3association.com</li>
+                            <li>+91 11 40450114</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div class="col-sm-6" >
+                    <form class="" action="{% url 'contact_us' %}" method="post" id="bharat_contactus">
+                        {% csrf_token %}
+                        <div class="contact_form">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Full Name <span _>*</span></label>
+                                    <input type="text" placeholder="Enter your name here" id="fullName" name="fullName" class="form-control" >
+                                    <span id="error_fullName" class="err"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="Official-Email-ID">Official Email ID <span _>*</span></label>
+                                        <input type="text" placeholder="Enter your email here"class="form-control" id="emailId" name="emailId" >
+                                        <span id="error_emailId" class="err"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="Designation">Designation <span _>*</span></label>
+                                        <input type="text" placeholder="Enter your designation here"class="form-control" id="designation" name="designation" >
+                                        <span id="error_designation" class="err"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="Company Name">Company Name <span _>*</span></label>
+                                        <input type="text" placeholder="Your company name here "class="form-control" id="compnayName" name="compnayName" >
+                                        <span id="error_compnayName" class="err"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="Phone Number">Phone Number <span _>*</span></label>
+                                        <input type="text" placeholder="+91 - XXXXXXXXXX "class="form-control" id="phoneNumber" name="phoneNumber" onkeypress="return onlyNumbers(event);">
+                                        <span id="error_phoneNumber" class="err"></span>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Leave us a note <span _>*</span></label>
+                                    <textarea placeholder="Type Your Message" class="form-control" id="description" name="description" ></textarea>
+                                    <span id="error_description" class="err"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="submit_btn">
+                                    <button class="btn btn-fill" {% url 'contact_us' %} onclick="validateContactForm()">Submit</button>
+                                  </div>
+                            </div>
+                            <span id="success_message"></span>
+                        </div>
+                    </form>
+                </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+        {% endblock content %}
+
+</html>
